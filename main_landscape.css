@@ -1,0 +1,117 @@
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.stars-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    min-width: 50vw;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+.constellation-canvas {
+    
+    left: var(--safe-left);       /* hug the safe left edge */
+    top: 50vh;
+    position: absolute;
+    z-index: 5;
+   
+    
+}
+.reveal-container {
+    position: absolute;
+    top: 30%;
+    left: 75%; /* center of the right half (50% + half of 50%) */
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical centering */
+    align-items: center;       /* horizontal centering */
+    text-align: center;
+    z-index: 15;
+    color: white;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.gender-text {
+    font-size: 7vw;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 10px rgba(255,255,255,1), 1px 1px 0px rgba(255,255,255,1);
+    color: inherit;
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 1.2s cubic-bezier(0.23,1,0.32,1);
+}
+
+.gender-text.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: shimmer 3s infinite 1.5s;
+}
+ @keyframes revealFade {
+            0% { opacity: 0; transform: translate(-50%, -100%) scale(0.5); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+.baby-text {
+    font-size: 3vw;
+    color: #E8E8E8;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.7);
+    text-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+    padding: 0.5rem 1rem;
+}
+
+.instructions {
+    position: absolute;
+    left: 50vw;
+    top: 2rem;
+    width: 48vw;
+    text-align: center;
+    z-index: 10;
+    color: rgba(255,255,255,0.9);
+    font-size: 2em;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    padding-left: 24px;
+    padding-right: 24px;
+    max-width: 90vw;
+    box-sizing: border-box;
+}
+
+.instructions.hidden {
+    opacity: 0;
+}
+#progress-indicator {
+            top: 80%;
+}
+#restart-btn {
+  padding: 0.5em 0.5em;
+  margin: 0 0;
+  width: 80%;
+}
+@media screen and (max-height: 321px) {
+  #nosoundbtn, #withsoundbtn {
+    font-size: 2vw; 
+  }
+  h2{
+    font-size: 4vw;
+  }
+  .instructions {
+        font-size: 1.5rem;
+    }
+    #progress-indicator {
+        font-size: 0.9rem;
+    }
+}
